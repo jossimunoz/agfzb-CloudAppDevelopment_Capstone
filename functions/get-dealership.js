@@ -6,8 +6,8 @@ const Cloudant = require('@cloudant/cloudant');
 async function dbCloudantConnect() {
     try {
         const cloudant = Cloudant({
-            plugins: { iamauth: { iamApiKey: '' } }, // Replace with your IAM API key
-            url: '', // Replace with your Cloudant URL
+            plugins: { iamauth: { iamApiKey: '9ZBkNUjb8yhN5_gfXxS12uqvaaskxKQBwUzZ3tsMx9vj' } }, // not use this lmao
+            url: 'https://5a043785-686a-4828-a4fc-b5f69c9c2b41-bluemix.cloudantnosqldb.appdomain.cloud',
         });
         const db = cloudant.use('dealerships');
         console.info('Connect success! Connected to DB');
@@ -30,13 +30,13 @@ app.get('/dealerships/get', (req, res) => {
     if (state) {
         selector.state = state;
     }
-    
+
     if (id) {
         selector.id = parseInt(id); // Filter by "id" with a value of 1
     }
     const queryOptions = {
         selector,
-        limit: 10, // Limit the number of documents returned to 10
+        limit: 20, // Limit the number of documents returned to 10
     };
     db.find(queryOptions, (err, body) => {
         if (err) {

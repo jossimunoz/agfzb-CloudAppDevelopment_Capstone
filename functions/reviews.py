@@ -4,9 +4,9 @@ from flask import Flask, jsonify, request
 import atexit
 
 # Add your Cloudant service credentials here
-cloudant_username = ""
-cloudant_api_key = ""
-cloudant_url = ""
+cloudant_username = "5a043785-686a-4828-a4fc-b5f69c9c2b41-bluemix"
+cloudant_api_key = "9ZBkNUjb8yhN5_gfXxS12uqvaaskxKQBwUzZ3tsMx9vj"
+cloudant_url = "https://5a043785-686a-4828-a4fc-b5f69c9c2b41-bluemix.cloudantnosqldb.appdomain.cloud"
 client = Cloudant.iam(
     cloudant_username, cloudant_api_key, connect=True, url=cloudant_url
 )
@@ -46,7 +46,9 @@ def post_review():
         abort(400, description="Invalid JSON data")
 
     # Extract review data from the request JSON
-    review_data = request.json
+    review_data = request.json['review']
+
+    print(review_data)
     # Validate that the required fields are present in the review data
     required_fields = [
         "id",
