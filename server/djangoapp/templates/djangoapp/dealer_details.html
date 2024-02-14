@@ -4,6 +4,9 @@
   <div class="col-lg-12">
     <h1>Reviews for {{dealership_name}}</h1>
   </div>
+  <div class="col-lg-12 mb-3 text-right">
+    <a href="{% url 'djangoapp:add_review' dealership_id %}" class="btn btn-primary btn-sm">Add a review</a>
+  </div>
   {% for review in reviews %}
   <div class="col-md-4 mb-4">
     <div class="card">
